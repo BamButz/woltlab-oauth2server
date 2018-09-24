@@ -2,8 +2,7 @@ image: php:7.2
 before_script:
 - apt-get update && apt-get install -y git
 - curl -sS https://getcomposer.org/installer | php
-- php composer.phar install
-- composer global require "squizlabs/php_codesniffer=3.*"
+- php composer.phar global require "squizlabs/php_codesniffer=3.*"
 
 stages:
 - syntax
