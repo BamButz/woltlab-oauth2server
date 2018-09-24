@@ -1,25 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<package name="de.cryptonica.oauth2server" xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com/XSD/tornado/package.xsd">
-	<packageinformation>
-		<packagename>OAuth2 Authorization Server</packagename>
-		<packagedescription>Implementation of a simple authorization server into the wcf</packagedescription>
-		<version>1.0.0</version>
-		<date>2018-07-29</date>
-	</packageinformation>
+<package name="de.cryptonica.oauth2server" xmlns="http://www.woltlab.com"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.woltlab.com/XSD/tornado/package.xsd">
+    <packageinformation>
+        <packagename>OAuth2 Authorization Server</packagename>
+        <packagedescription>Implementation of a simple authorization server into the wcf</packagedescription>
+        <version>1.0.0</version>
+        <date>2018-07-29</date>
+    </packageinformation>
 
-	<authorinformation>
-		<author>Cryptonica</author>
-		<authorurl>https://www.cryptonica.de</authorurl>
-	</authorinformation>
+    <authorinformation>
+        <author>Cryptonica</author>
+        <authorurl>https://www.cryptonica.de</authorurl>
+    </authorinformation>
 
-	<requiredpackages>
-		<requiredpackage minversion="3.0.0">com.woltlab.wcf</requiredpackage>
-	</requiredpackages>
+    <requiredpackages>
+        <requiredpackage minversion="3.0.0">com.woltlab.wcf</requiredpackage>
+    </requiredpackages>
 
-	<instructions type="install">
-		<instruction type="sql">install.sql</instruction>
-		<instruction type="file">files.tar</instruction>
-		<instruction type="acpTemplate">acptemplates.tar</instruction>
-		<instruction type="language">languages/*.xml</instruction>
-	</instructions>
+    <instructions type="install">
+        <instruction type="sql">install.sql</instruction>
+        <instruction type="file">files.tar</instruction>
+        <instruction type="acpTemplate">acptemplates.tar</instruction>
+        <instruction type="language">languages/*.xml</instruction>
+    </instructions>
 </package>

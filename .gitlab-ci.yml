@@ -1,0 +1,13 @@
+image: php:7.2
+before_script:
+- apt-get update && apt-get install -y git
+- php bin/composer.phar install --dev --prefer-dist
+- composer global require "squizlabs/php_codesniffer=3.*"
+
+stages:
+- syntax
+
+phpcs:
+  stage: syntax
+  script:
+  - phpcs -p --extensions=php --standard="`pwd`/ci/syntax" .

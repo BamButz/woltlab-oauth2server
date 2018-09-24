@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<ruleset name="WCF">
+	<description>WoltLab Suite Coding Standard</description>
+	<exclude-pattern>*/zend/*</exclude-pattern>
+	<exclude-pattern>*/CodeSniff/*</exclude-pattern>
+	<exclude-pattern>*/parsedown/*</exclude-pattern>
+	<exclude-pattern>*/scssphp/*</exclude-pattern>
+	<exclude-pattern>*/api/*</exclude-pattern>
+	
+	<rule ref="Generic.Classes.DuplicateClassName" />
+	<rule ref="Generic.CodeAnalysis.ForLoopShouldBeWhileLoop" />
+	<rule ref="Generic.CodeAnalysis.ForLoopWithTestFunctionCall" />
+	<rule ref="Generic.CodeAnalysis.UnconditionalIfStatement" />
+	<rule ref="Generic.CodeAnalysis.UselessOverridingMethod" />
+	<rule ref="Generic.Files.ByteOrderMark" />
+	<rule ref="Generic.Files.EndFileNewline" />
+	<rule ref="Generic.Files.OneClassPerFile" />
+	<rule ref="Generic.Files.OneInterfacePerFile" />
+	<rule ref="Generic.Files.OneTraitPerFile" />
+	<rule ref="Generic.Formatting.DisallowMultipleStatements" />
+	<rule ref="Generic.Functions.FunctionCallArgumentSpacing" />
+	<rule ref="Generic.NamingConventions.UpperCaseConstantName" />
+	<rule ref="Generic.PHP.CharacterBeforePHPOpeningTag" />
+	<rule ref="Generic.PHP.DisallowShortOpenTag" />
+	<rule ref="Generic.PHP.LowerCaseConstant" />
+	<rule ref="Generic.PHP.LowerCaseKeyword" />
+	<rule ref="Generic.WhiteSpace.DisallowSpaceIndent" />
+	<rule ref="Squiz.Arrays.ArrayBracketSpacing" />
+	<rule ref="Squiz.Classes.LowercaseClassKeywords" />
+	<rule ref="Squiz.Classes.SelfMemberReference" />
+	<rule ref="Squiz.Classes.ValidClassName" />
+	<rule ref="Squiz.Commenting.DocCommentAlignment" />
+	<rule ref="Squiz.ControlStructures.ElseIfDeclaration" />
+	<rule ref="Squiz.ControlStructures.ForEachLoopDeclaration" />
+	<rule ref="Squiz.ControlStructures.ForLoopDeclaration" />
+	<rule ref="Squiz.ControlStructures.LowercaseDeclaration" />
+	<rule ref="Squiz.Operators.IncrementDecrementUsage" />
+	<rule ref="Squiz.Operators.ValidLogicalOperators" />
+	<rule ref="Squiz.Scope.MethodScope" />
+	<rule ref="Squiz.Strings.EchoedStrings" />
+	<rule ref="Squiz.WhiteSpace.FunctionOpeningBraceSpace" />
+	<rule ref="Squiz.WhiteSpace.ObjectOperatorSpacing" />
+	<rule ref="WCF.Classes.ClassFileName" />
+	<rule ref="WCF.ControlStructures.ControlSignature" />
+	<rule ref="WCF.Functions.OpeningFunctionBraceKernighanRitchie" />
+	<rule ref="WCF.Methods.MethodDeclaration" />
+	<rule ref="WCF.Namespaces.ClassMustBeImported" />
+	<rule ref="WCF.Namespaces.UseDeclaration" />
+	<rule ref="WCF.WhiteSpace.SuperfluousWhitespace" />
+	<rule ref="Zend.Files.ClosingTag" />
+	
+	<!-- Use Unix newlines -->
+	<rule ref="Generic.Files.LineEndings">
+		<properties>
+			<property name="eolChar" value="\n" />
+		</properties>
+	</rule>
+</ruleset>
