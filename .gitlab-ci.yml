@@ -1,8 +1,5 @@
 image: php:7.2
 before_script:
-- apt-get update && apt-get install -y git
-- curl -sS https://getcomposer.org/installer | php
-- php composer.phar global require "squizlabs/php_codesniffer=3.*"
 - pear install pear/PHP_CodeSniffer
 
 stages:
@@ -11,4 +8,4 @@ stages:
 phpcs:
   stage: syntax
   script:
-  - phpcs -p --extensions=php --standard="`pwd`/ci/syntax" .
+  - phpcs -p --extensions=php --standard="`pwd`/ci/WCF" .
