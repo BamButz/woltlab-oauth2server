@@ -1,0 +1,7 @@
+#
+# GITIGNORE
+#
+
+# Common directories
+/build/
+/tmp/
