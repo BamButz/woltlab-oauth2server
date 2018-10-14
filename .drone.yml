@@ -3,7 +3,7 @@ pipeline:
     image: php:7.2
     commands:
       - pear install pear/PHP_CodeSniffer
-      - phpcs -p --extensions=php --standard="`pwd`/ci/WCF" "`pwd`/src"
+      - phpcs -p -v --extensions=php --standard="`pwd`/ci/WCF" "`pwd`/src"
     when:
       branch: [master, develop]
       event: [push, pull_request]
