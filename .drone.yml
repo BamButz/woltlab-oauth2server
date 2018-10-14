@@ -1,0 +1,9 @@
+pipeline:
+  syntax:
+    image: php:7.2
+    commands:
+      - pear install pear/PHP_CodeSniffer
+      - phpcs -p --extensions=php --standard="`pwd`/ci/WCF"
+    when:
+      branch: [master, develop]
+      event: [push, pull_request]
