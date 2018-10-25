@@ -57,7 +57,7 @@ class AuthorizeAction extends AbstractAction {
 
 		// Existiert ein Client mit dieser ID?
 		$client = new AuthClient($this->clientID);
-		if ($client == null)
+		if ($client->getObjectID() === 0)
 			throw new IllegalLinkException();
 
 		// Wenn Benutzer nicht eingeloggt, muss dieser sich erst einmal einloggen
