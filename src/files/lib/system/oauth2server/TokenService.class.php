@@ -25,7 +25,6 @@ class TokenService {
 	}
 
 	private static function createNewToken($clientID, $userID, $tokenType) {
-
 		$token = bin2hex(openssl_random_pseudo_bytes(16));
 		$expires_in = self::getExpiryByTokenType($tokenType);
 
