@@ -10,5 +10,5 @@ CREATE TABLE wcf1_auth_tokens (
 	tokenType ENUM('access_token', 'refresh_token', 'auth_code') NOT NULL,
 	userID INT(10) NOT NULL,
 	clientID VARCHAR(255) NOT NULL,
-	expires INT(10) NOT NULL
+	expires_in INT(10) NOT NULL
 );

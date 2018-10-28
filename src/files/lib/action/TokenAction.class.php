@@ -10,11 +10,13 @@ namespace wcf\action;
 
 
 use wcf\data\oauth2server\AuthToken;
-use wcf\data\oauth2server\AuthTokenEditor;
 use wcf\system\exception\IllegalLinkException;
+use wcf\system\oauth2server\TokenService;
 
 class TokenAction extends AbstractAction {
 
+	private $client = null;
+	private $secret = null;
 	private $grantType = null;
 	private $code = null;
 
@@ -50,31 +52,14 @@ class TokenAction extends AbstractAction {
 		if($authCode->expires < time())
 			throw new IllegalLinkException();
 
-		$refreshToken = bin2hex(openssl_random_pseudo_bytes(16));
-		AuthTokenEditor::create([
-			'token' => $refreshToken,
-			"userID" => $authCode->userID,
-			"clientID" => $authCode->clientID,
-			"tokenType" => "refresh_token",
-			"expires" => time() + (60 * 60 * 24 * 30) // Code ist ab aktueller Zeit 30 Tage gültig
-		]);
-
-		$accessToken = bin2hex(openssl_random_pseudo_bytes(16));
-		$expires_in = time() + (60 * 30); // Code ist ab aktueller Zeit 30 Minuten gültig
-		AuthTokenEditor::create([
-			'token' => $accessToken,
-			"userID" => $authCode->userID,
-			"clientID" => $authCode->clientID,
-			"tokenType" => "access_token",
-			"expires" => $expires_in
-		]);
+		$refreshToken = TokenService::createRefreshToken($authCode->clientID, $authCode->userID);
+		$accessToken = TokenService::createAccessToken($authCode->clientID, $authCode->userID);
 
 		$json = new \stdClass();
 		$json->access_token = $accessToken;
 		$json->refresh_token = $refreshToken;
-		$json->expires_in = $expires_in;
+		$json->expires_in = $accessToken->expires_in;
 		$json->token_type = "bearer";
-		$json->scope = "email";
 
 		@header('Content-type: application/json');
 		echo json_encode($json, JSON_PRETTY_PRINT);

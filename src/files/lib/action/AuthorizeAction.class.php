@@ -8,6 +8,7 @@ use wcf\data\oauth2server\OAuth2TokenEditor;
 use wcf\data\object\type\ObjectTypeCache;
 use wcf\system\exception\IllegalLinkException;
 use wcf\system\exception\SystemException;
+use wcf\system\oauth2server\TokenService;
 use wcf\system\payment\type\IPaymentType;
 use wcf\system\request\LinkHandler;
 use wcf\system\WCF;
@@ -73,19 +74,11 @@ class AuthorizeAction extends AbstractAction {
 		// TODO: Consent
 
 		// Token generieren
-		$token = bin2hex(openssl_random_pseudo_bytes(16));
-
-		AuthTokenEditor::create([
-			'token' => $token,
-			"userID" => WCF::getUser()->userID,
-			"clientID" => $this->clientID,
-			"tokenType" => "auth_code",
-			"expires" => time() + (60 * 5) // Code ist ab aktueller Zeit 5 Minuten gültig
-		]);
+		$authCode = TokenService::createAuthorizationCode($this->clientID, WCF::getUser()->userID);
 
 		// TODO: URL mit hinterlegter Adresse prüfen sowie sicherer Uri Erstellung
 		$redirectUri = $this->redirectUri;
-		$redirectUri .= (parse_url($redirectUri, PHP_URL_QUERY) ? '&' : '?') . 'state=' . $this->state . '&code=' . $token;
+		$redirectUri .= (parse_url($redirectUri, PHP_URL_QUERY) ? '&' : '?') . 'state=' . $this->state . '&code=' . $authCode->token;
 
 		HeaderUtil::redirect($redirectUri);
 		$this->executed();
