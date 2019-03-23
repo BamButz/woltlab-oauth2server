@@ -5,8 +5,8 @@ namespace wcf\action;
 use wcf\data\oauth2server\AuthToken;
 use wcf\system\exception\IllegalLinkException;
 use wcf\system\oauth2server\TokenService;
-use \wcf\data\oauth2server\AuthTokenEditor;
-use \wcf\data\oauth2server\AuthClient;
+use wcf\data\oauth2server\AuthTokenEditor;
+use wcf\data\oauth2server\AuthClient;
 
 class TokenAction extends AbstractAction {
 

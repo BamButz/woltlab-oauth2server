@@ -2,11 +2,11 @@
 
 namespace wcf\acp\form;
 
-use \wcf\form\AbstractForm;
-use \wcf\system\exception\UserInputException;
-use \wcf\data\oauth2server\AuthClientEditor;
-use \wcf\util\HeaderUtil;
-use \wcf\system\request\LinkHandler;
+use wcf\form\AbstractForm;
+use wcf\system\exception\UserInputException;
+use wcf\data\oauth2server\AuthClientEditor;
+use wcf\util\HeaderUtil;
+use wcf\system\request\LinkHandler;
 
 class AuthClientAddForm extends AbstractForm {
 	/**
@@ -18,19 +18,19 @@ class AuthClientAddForm extends AbstractForm {
 	public $callbackUrl = "";
 
 	/**
-     * @inheritDoc
-     */
-    public function readFormParameters() {
+	 * @inheritDoc
+	 */
+	public function readFormParameters() {
 		parent::readFormParameters();
 		
 		$this->description = isset($_POST["description"]) ? $_POST["description"] : "";
-        $this->callbackUrl = isset($_POST["callbackUrl"]) ? $_POST["callbackUrl"] : "";
+		$this->callbackUrl = isset($_POST["callbackUrl"]) ? $_POST["callbackUrl"] : "";
 	}
-	
+
 	/**
-     * @inheritDoc
-     */
-    public function validate() {
+	 * @inheritDoc
+	 */
+	public function validate() {
 		parent::validate();
 
 		if ($this->description == "")
