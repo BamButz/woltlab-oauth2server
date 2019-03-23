@@ -2,19 +2,12 @@
 
 namespace wcf\action;
 
-use wcf\data\oauth2server\OAuth2Client;
-use wcf\data\oauth2server\OAuth2Token;
-use wcf\data\oauth2server\OAuth2TokenEditor;
-use wcf\data\object\type\ObjectTypeCache;
+use wcf\data\oauth2server\AuthClient;
 use wcf\system\exception\IllegalLinkException;
-use wcf\system\exception\SystemException;
 use wcf\system\oauth2server\TokenService;
-use wcf\system\payment\type\IPaymentType;
 use wcf\system\request\LinkHandler;
 use wcf\system\WCF;
 use wcf\util\HeaderUtil;
-use wcf\util\HTTPRequest;
-use wcf\util\StringUtil;
 
 /**
  * Handles OAuth2 authorization requests
@@ -36,10 +29,17 @@ class AuthorizeAction extends AbstractAction {
 	public function readParameters() {
 		parent::readParameters();
 
-		$this->clientID = $_GET["client_id"];
-		$this->responseType = $_GET["redirect_uri"];
-		$this->redirectUri = $_GET["redirect_uri"];
-		$this->state = $_GET["state"];
+		if (isset($_GET["client_id"]))
+			$this->clientID = $_GET["client_id"];
+		
+		if (isset($_GET["response_type"]))
+			$this->responseType = $_GET["response_type"];
+
+		if (isset($_GET["redirect_uri"]))
+			$this->redirectUri = $_GET["redirect_uri"];
+
+		if (isset($_GET["state"]))
+			$this->state = $_GET["state"];
 	}
 
 	/**
@@ -60,7 +60,7 @@ class AuthorizeAction extends AbstractAction {
 		$client = new AuthClient($this->clientID);
 		if ($client->getObjectID() === 0)
 			throw new IllegalLinkException();
-
+		
 		// Wenn Benutzer nicht eingeloggt, muss dieser sich erst einmal einloggen
 		if (!WCF::getUser()->userID) {
 			$requestUri = WCF::getRequestURI();
@@ -77,7 +77,7 @@ class AuthorizeAction extends AbstractAction {
 		$authCode = TokenService::createAuthorizationCode($this->clientID, WCF::getUser()->userID);
 
 		// TODO: URL mit hinterlegter Adresse prüfen sowie sicherer Uri Erstellung
-		$redirectUri = $this->redirectUri;
+		$redirectUri = $client->callbackUrl;
 		$redirectUri .= (parse_url($redirectUri, PHP_URL_QUERY) ? '&' : '?') . 'state=' . $this->state . '&code=' . $authCode->token;
 
 		HeaderUtil::redirect($redirectUri);

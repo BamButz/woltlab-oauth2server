@@ -49,6 +49,12 @@ IF EXIST %sourcePath%/userMenu.xml (
     tar -rf %packagePath% -C %sourcePath% userMenu.xml
 )
 
+rem Wenn AcpMenus vorhanden sind diese packen
+IF EXIST %sourcePath%/acpMenu.xml (
+    ECHO Packe acpMenu.xml Datei..
+    tar -rf %packagePath% -C %sourcePath% acpMenu.xml
+)
+
 rem Wenn Pages vorhanden sind diese packen
 IF EXIST %sourcePath%/page.xml (
     ECHO Packe page.xml Datei..

@@ -23,5 +23,7 @@
         <instruction type="file">files.tar</instruction>
         <instruction type="acpTemplate">acptemplates.tar</instruction>
         <instruction type="language">languages/*.xml</instruction>
+        <instruction type="acpMenu">acpMenu.xml</instruction>
+        <instruction type="cronjob">cronjobs.xml</instruction>
     </instructions>
 </package>

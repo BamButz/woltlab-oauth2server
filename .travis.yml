@@ -1,0 +1,8 @@
+language: php
+php:
+  - 7.2
+  - 5.5
+before_install:
+  - pear install pear/PHP_CodeSniffer
+script:
+  - phpcs -p -v --extensions=php --standard="`pwd`/WCF" "`pwd`/src"

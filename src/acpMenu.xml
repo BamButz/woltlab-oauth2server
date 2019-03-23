@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com http://www.woltlab.com/XSD/vortex/acpMenu.xsd">
+    <import>
+        <acpmenuitem name="wcf.acp.menu.oauth2server.parent">
+			<parent>wcf.acp.menu.link.application</parent>
+		</acpmenuitem>
+
+		<acpmenuitem name="wcf.acp.menu.oauth2server.authclient.list">
+			<controller>wcf\acp\page\AuthClientListPage</controller>
+			<parent>wcf.acp.menu.oauth2server.parent</parent>
+			<showorder>1</showorder>
+		</acpmenuitem>
+    </import>
+</data>

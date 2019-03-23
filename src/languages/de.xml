@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <language xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com/XSD/tornado/language.xsd" languagecode="de">
+    
     <category name="de.cryptonica.oauth2server">
         <item name="de.cryptonica.oauth2server.authclient.add"><![CDATA[OAuth2 Client hinzufügen]]></item>
         <item name="de.cryptonica.oauth2server.authclient.edit"><![CDATA[OAuth2 Client bearbeiten]]></item>
+        <item name="de.cryptonica.oauth2server.authclient.list"><![CDATA[OAuth2 Clients]]></item>
     </category>
+
+    <category name="wcf.acp.menu">
+        <item name="wcf.acp.menu.oauth2server.parent"><![CDATA[OAuth2 Server]]></item>
+        <item name="wcf.acp.menu.oauth2server.authclient.list"><![CDATA[Clients]]></item>
+    </category>
+
 </language>
